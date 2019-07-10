@@ -41,7 +41,7 @@ class Home(models.Model):
     location = models.CharField(max_length = 80)
     price = models.CharField(max_length = 80)
     description = models.TextField()
-    owner = models.ForeignKey(User, on_delete=models.CASCADE,related_name='houses')
+    owner = models.ForeignKey(Profile, on_delete=models.CASCADE,related_name='houses')
 
     def __str__(self):
         return  self.hname
@@ -55,10 +55,10 @@ class Home(models.Model):
 class Review(models.Model):
     comment = models.CharField(max_length = 120)
     house = models.ForeignKey(Home, on_delete=models.CASCADE, related_name='comments')
-    posted = models.Foreignkey(User,)
+    posted = models.Foreignkey(User,on_delete=models.CASCADE)
 
     def __str__(self):
-        retrn self.comment
+        return self.comment
     
     def save_comment(self):
         self.save()
