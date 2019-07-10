@@ -55,7 +55,7 @@ class Home(models.Model):
 class Review(models.Model):
     comment = models.CharField(max_length = 120)
     house = models.ForeignKey(Home, on_delete=models.CASCADE, related_name='comments')
-    posted = models.Foreignkey(User,on_delete=models.CASCADE)
+    posted = models.ForeignKey(Profile, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.comment

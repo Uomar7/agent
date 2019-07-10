@@ -15,7 +15,7 @@ class HomeForm(forms.ModelForm):
 
 class ReviewForm(forms.ModelForm):
     class Meta:
-        model = Comment
+        model = Review
         exclude = ["house","posted"]
         widgets = {
             'comment':TextInput(attrs={

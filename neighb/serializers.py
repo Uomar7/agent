@@ -13,5 +13,5 @@ class HomeSerializer(serializers.ModelSerializer):
 
 class ReviewSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Comment
+        model = Review
         fields = ("posted","house")
