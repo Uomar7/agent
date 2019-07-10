@@ -13,6 +13,9 @@ from rest_framework.views import APIView
 from .serializers import ProfileSerializer, HomeSerializer, ReviewSerializer
 from rest_framework import status
 
+def home(request):
+    houses = Home.objects.all()
+    return render(request, 'all_temps/home.html', {"houses":houses})
 
 
 class ProfileList(APIView):
