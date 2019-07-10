@@ -1,6 +1,6 @@
 from django import forms
 from django.forms import TextInput, CharField, Textarea
-from .models import Profile, Comment, Home
+from .models import Profile, Review, Home
 from django.contrib.auth.models import User
 
 class ProfileForm(forms.ModelForm):
@@ -13,7 +13,7 @@ class HomeForm(forms.ModelForm):
         model = Home
         exclude = ["owner"]
 
-class CommentForm(forms.ModelForm):
+class ReviewForm(forms.ModelForm):
     class Meta:
         model = Comment
         exclude = ["house","posted"]
