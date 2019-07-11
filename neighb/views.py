@@ -22,11 +22,22 @@ def display(request):
     return render(request, 'all_temps/hs.html',{"houses":houses})
 
 @login_required(login_url="/accounts/login/")
+@transaction.atomic
 def profile(request,id):
     profile = Profile.objects.get(username = id)
     houses = profile.houses.all()
-    return render(request,'all_temps/profile.html', {"profile":profile,"houses":houses})
 
+    if request.method == "POST":
+        form = ProfileForm(request.POST, request.FILES, instance=profile)
+        if form.is_valid():
+            form.save()
+
+            return redirect('profile',profile.id)
+
+    else:
+        form = ProfileForm(instance=request.user.profile)
+
+    return render(request,'all_temps/profile.html', {"profile":profile,"houses":houses,"form":form})
 
 class ProfileList(APIView):
     permission_classes = (IsAdminOrReadOnly,)

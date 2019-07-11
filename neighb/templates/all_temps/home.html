@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Nixie+One&display=swap" rel="stylesheet">
     {% endblock %}
     <script src="https://kit.fontawesome.com/f3248859d7.js"></script>
+    <link rel="shortcut icon" type="image/x-icon"href="{% static 'img/icons8-home-24.png'  %}" />
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -19,7 +20,7 @@
     {% if title%}
     <title>{{title}}</title>
     {% else %}
-    <title><i class="fas fa-home">Y-AGENT</i></title>
+    <title>Y-AGENT</title>
     {% endif %}
 </head>
 <style>
@@ -113,7 +114,7 @@
                     <a class="nav-link" href="{% url 'profile' request.user.id %}">Profile</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="{% url 'home'%}"> leave Neighbourhood</a>
+                    <a class="nav-link" href="{% url 'index'%}"> Houses </a>
                 </li>
                 <li>
                     <a class="nav-link" href="/accounts/password/change">Change Password</a>
@@ -206,14 +207,13 @@
             <div id="row2" class="row">
                 <p>Lets connect on Social Media</p>
                 <ul>
-                    <li> <a href="https://www.instagram.com/u.o.m.a.r_officiel/?"><i class="fab fa-instagram"></i></a>
-                    </li>
-                    <li><a href="https://www.facebook.com/uomarearlie"><i class="fab fa-facebook"></i></a></li>
-                    <li><a href="https://mail.google.com/mail/"><i class="far fa-envelope"></i></a></li>
+                    <li> <a href="https://www.instagram.com/u.o.m.a.r_officiel/?" target="blank"><i class="fab fa-instagram"></i></a></li>
+                    <li><a href="https://www.facebook.com/uomarearlie" target="blank"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://mail.google.com/mail/" target="blank"><i class="far fa-envelope"></i></a></li>
                 </ul>
             </div>
             <div class="container">
-                <div class="row">
+                <div id="rf" class="row">
                     <div class="col-md-4">
                         <img src="https://lh3.googleusercontent.com/XCATo9NQ4UQvQS7J_hydFoNquvGxCeoT7ByneLmamoSXML9P-Xu3PWpBnE9QE42cnaPVfjjSCUwYsdHHa9CKuwYFlkHCKq7nkR8VIdssuvF7_0g5QGLsWg2i8ISPDN19UDeAt_d5bAGNzXa7nnSpNruq_0Rr3OHlPpXyQ0_uTJLjEP00yaqFlQbKQI09WRFluYxsr63V3DtEBctWxuj4RL3pKH4EqevJKS4n4jTbCfLLRNwIX-JW4tPnFmGVo90Odm93jwA_vVzrNC5rhx2Mqswu1xKyVF6aWg4l2um2lB41NO2ShVzovP0N2Jr7SiBy-ZhWhJ3h9RT8kLpAVCuA8vX4SNK8YcPv9GTYivTtWSxgRddA4XTbuaY5D4BVZQ1EHoLITeUMWposqWaUCNwIS-M2W4wg4DuQEh_c6fPvrMeb5Po2ivqd0O_GcuSP32adfgt44UTTRV0H_7PvQgnwJ36qM0idkRoaV-LefWmDEBZ2YRLfBZRD3K11IkEXAZwe4fF_M9ouZhN01S_mQ_-XTdDFrvK5L_InB7jw3fz-HqhTDskr5HtCcx3xBhDDHxqNL8cFBgCVVofpwnZU5EQnGWdGSuIMF7hn5Nr6D1Ay1D-WyYYCFlR6PpU6qIejIpcJcWQBS63NNijrUI7qYlfswRLxrAyGk4k=w650-h981-no"
                             class="rounded-circle img-thumbnail z-depth-1" style="width: 200px; height:200px" alt="">
