@@ -23,20 +23,21 @@
 <style>
 .jumbotron{
     height: 45vh;
+    background: linear-gradient(to right, aliceblue,#6DD5FA,#2980B9);
 }
 .navbar .navbar-brand{
     font-weight: bolder;
 }
 .navbar .navbar-brand:hover{
     font-weight: lighter;
-    color: crimson;
+    color: #2980B9;
 }
 .navbar li a{
     color: black;
     font-weight: bolder;
 }
 .navbar li a:hover{
-    color: crimson;
+    color: #2980B9;
     text-decoration: none;
     font-weight: lighter;
 }
@@ -54,36 +55,38 @@
     letter-spacing: 9px;
     font-family: 'Nixie One',cursive;
     font-weight: 600;
+    color:aliceblue;
 }
 </style>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-family: 'Nixie One',cursive;">
-            <a class="navbar-brand" href="{% url 'home'%}">Y-AGENT</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                {% if user.is_authenticated %}
-                <li class="nav-item">
-                   <!-- <a class="nav-link" href="{% url 'profile' request.user.id %}">Profile</a> -->
-                </li>
-               <li>
-                   <!-- <a class="nav-link" href="{% url 'new_post' %}">Add Post</a> -->
-                </li>
-                <li>
-                    <!-- <a class="nav-link" href="{% url 'home'%}"> leave Neighbourhood</a> -->
-                </li>
-                <li>
-                    <!-- <a class="nav-link" href="/accounts/password/change">Change Password</a> -->
-               </li>
-               <li class="nav-item">
-                   <a class="nav-link" href="/logout">Logout</a>
-                </li>
-                <!-- <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-family: 'Nixie One',cursive;">
+    <a class="navbar-brand" href="{% url 'home'%}">Y_AGENT</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            {% if user.is_authenticated %}
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'profile' request.user.id %}">Profile</a>
+            </li>
+            <li>
+                <a class="nav-link" href="{% url 'new_post' %}">Add Post</a>
+            </li>
+            <li>
+                <a class="nav-link" href="{% url 'home'%}"> leave Neighbourhood</a>
+            </li>
+            <li>
+                <a class="nav-link" href="/accounts/password/change">Change Password</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/logout">Logout</a>
+            </li>
+            <!-- <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     Dropdown
                 </a>
@@ -96,20 +99,20 @@
             </li> -->
             {% else%}
             <li class="nav-item">
-                   <a href="/accounts/login">login</a>
-                </li>
-                {% endif %}
-            </ul>
-            <form class="form-inline my-2 my-lg-0" role="search" action="#">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="users" aria-label="Search">
-                <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="glyphicon glyphicon-search"></i></button> -->
-            </form>
-        </div>
-    </nav>
-
+                <a href="/accounts/login">Login</a>
+            </li>
+            {% endif %}
+        </ul>
+        <form class="form-inline my-2 my-lg-0" role="search" action="#">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="users" aria-label="Search">
+            <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="glyphicon glyphicon-search"></i></button> -->
+        </form>
+    </div>
+</nav>
 <div class="jumbotron">
 <h2><strong>Y-AGENT</strong></h2>
 <p>Your Mortgage Searcher</p>
 </div>
+
 </body>
 </html>
