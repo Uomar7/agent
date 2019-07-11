@@ -1,0 +1,52 @@
+{% extends 'base.html'%}
+{% load bootstrap4 %}
+{% load static%}
+{% block styles%}
+{% bootstrap_css %}
+<link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Nixie+One&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'css/index.css' %}" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        {% for house in houses %}
+        <div class="col-md-3">
+            <div class="card">
+
+                <!-- Card image -->
+                <div class="card-header">
+                    {{house.owner}}
+                </div>
+                <div class="view overlay">
+                    <img class="img-thumbnail" src="{{ house.pic1.url }}" alt="Card image cap">
+                    <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <!-- Card content -->
+                <div class="card-body">
+                    <p class="card-text">{{house.hname}}</p>
+                    <!-- Social shares button -->
+                    <!-- <a class="activator waves-effect waves-light mr-4"><i class="fas fa-share-alt"></i></a> -->
+                    <hr>
+                    <!-- Text -->
+                    <!-- <p class="card-text"> {{ project.profile }}</p> -->
+                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                        card's content.</p> -->
+                    <!-- Link -->
+                    <a href="{% url 'single_post' post.id %}" class="black-text d-flex justify-content-end">
+                        <h5>View details <i class="fas fa-home"></i></h5>
+                    </a>
+
+                </div>
+
+            </div>
+        </div>
+        {% empty%}
+        <h4>No Houses On Sale</h4>
+        {% endfor%}
+    </div>
+</div>
+{% endblock %}

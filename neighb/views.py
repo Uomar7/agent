@@ -14,12 +14,18 @@ from .serializers import ProfileSerializer, HomeSerializer, ReviewSerializer
 from rest_framework import status
 
 def home(request):
-    return render(request, 'all_temps/home.html', {"houses":houses})
+    return render(request, 'all_temps/home.html')
 
 @login_required(login_url="/accounts/login/")
 def display(request):
     houses = Home.objects.all()
     return render(request, 'all_temps/hs.html',{"houses":houses})
+
+@login_required(login_url="/accounts/login/")
+def profile(request,id):
+    profile = Profile.objects.get(username = id)
+    houses = profile.houses.all()
+    return render(request,'all_temps/profile.html', {"profile":profile,"houses":houses})
 
 
 class ProfileList(APIView):
