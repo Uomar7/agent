@@ -3,6 +3,7 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     {% block styles%}
     {% bootstrap_css %}
@@ -10,6 +11,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Nixie+One&display=swap" rel="stylesheet">
     {% endblock %}
+    <script src="https://kit.fontawesome.com/f3248859d7.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,75 +19,112 @@
     {% if title%}
     <title>{{title}}</title>
     {% else %}
-    <title>Y-Agent - Home</title>
+    <title><i class="fas fa-home">Y-AGENT</i></title>
     {% endif %}
 </head>
 <style>
-.jumbotron{
-    height: 45vh;
-    background: linear-gradient(to right, aliceblue,#6DD5FA,#2980B9);
-}
-.navbar .navbar-brand{
-    font-weight: bolder;
-}
-.navbar .navbar-brand:hover{
-    font-weight: lighter;
-    color: #2980B9;
-}
-.navbar li a{
-    color: black;
-    font-weight: bolder;
-}
-.navbar li a:hover{
-    color: #2980B9;
-    text-decoration: none;
-    font-weight: lighter;
-}
-.jumbotron h2{
-    display: flex;
-    justify-content: center;
-    font-family: 'Nixie One',cursive;
-    transform: translateY(60px);
-    font-size: 5em;
-    letter-spacing: 24px;
-}
-.jumbotron p{
-    text-align: center;
-    transform: translateY(2rem);
-    letter-spacing: 9px;
-    font-family: 'Nixie One',cursive;
-    font-weight: 600;
-    color:aliceblue;
-}
+    .jumbotron {
+        height: 45vh;
+        background: linear-gradient(to right, aliceblue, #6DD5FA, #2980B9);
+    }
+
+    .navbar .navbar-brand {
+        font-weight: bolder;
+    }
+
+    .navbar .navbar-brand:hover {
+        font-weight: lighter;
+        color: #2980B9;
+    }
+
+    .navbar li a {
+        color: black;
+        font-weight: bolder;
+    }
+
+    .navbar li a:hover {
+        color: #2980B9;
+        text-decoration: none;
+        font-weight: lighter;
+    }
+
+    .jumbotron h2 {
+        display: flex;
+        justify-content: center;
+        font-family: 'Nixie One', cursive;
+        transform: translateY(60px);
+        font-size: 5em;
+        letter-spacing: 24px;
+    }
+
+    .jumbotron p {
+        text-align: center;
+        transform: translateY(2rem);
+        letter-spacing: 9px;
+        font-family: 'Nixie One', cursive;
+        font-weight: 600;
+        color: aliceblue;
+    }
+
+    #row1 {
+        margin-top: 2rem;
+        height: 38vh;
+
+    }
+
+    #row2 {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: linear-gradient(to right, aliceblue, #6DD5FA, #2980B9);
+        font-size: 1.2rem;
+    }
+
+    ul {
+        display: flex;
+        list-style: none;
+    }
+
+    ul li {
+        padding: 0.4rem 0;
+        margin: 0 3rem;
+        position: relative;
+        letter-spacing: 3px;
+        color: white;
+    }
+    ul li a{
+        color: white;
+    }
 </style>
+
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-family: 'Nixie One',cursive;">
-    <a class="navbar-brand" href="{% url 'home'%}">Y_AGENT</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-family: 'Nixie One',cursive;">
+        <a class="navbar-brand" href="{% url 'home'%}">Y_AGENT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            {% if user.is_authenticated %}
-            <li class="nav-item">
-                <a class="nav-link" href="{% url 'profile' request.user.id %}">Profile</a>
-            </li>
-            <li>
-                <a class="nav-link" href="{% url 'new_post' %}">Add Post</a>
-            </li>
-            <li>
-                <a class="nav-link" href="{% url 'home'%}"> leave Neighbourhood</a>
-            </li>
-            <li>
-                <a class="nav-link" href="/accounts/password/change">Change Password</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/logout">Logout</a>
-            </li>
-            <!-- <li class="nav-item dropdown">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'profile' request.user.id %}">Profile</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'new_post' %}">Add Post</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="{% url 'home'%}"> leave Neighbourhood</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="/accounts/password/change">Change Password</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                <!-- <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     Dropdown
@@ -97,22 +136,99 @@
                     <a class="dropdown-item" href="#">Something else here</a>
                 </div>
             </li> -->
-            {% else%}
-            <li class="nav-item">
-                <a href="/accounts/login">Login</a>
-            </li>
-            {% endif %}
-        </ul>
-        <form class="form-inline my-2 my-lg-0" role="search" action="#">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" name="users" aria-label="Search">
-            <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="glyphicon glyphicon-search"></i></button> -->
-        </form>
+                {% else%}
+                <li class="nav-item">
+                    <a href="/accounts/login">Login</a>
+                </li>
+                {% endif %}
+            </ul>
+            <form class="form-inline my-2 my-lg-0" role="search" action="#">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="users" aria-label="Search">
+                <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="glyphicon glyphicon-search"></i></button> -->
+            </form>
+        </div>
+    </nav>
+    <div class="jumbotron">
+        <h2><strong>Y-AGENT</strong></h2>
+        <p>Your Mortgage Searcher</p>
     </div>
-</nav>
-<div class="jumbotron">
-<h2><strong>Y-AGENT</strong></h2>
-<p>Your Mortgage Searcher</p>
-</div>
+
+    <div class="container-fluid">
+
+        <h4>What We Do</h4>
+
+        <div class="body">
+            <div class="row">
+                <div class="col-md-4">
+                    <img src="https://images.wallpaperscraft.com/image/house_lake_mountains_winter_118343_2048x1152.jpg"
+                        class="img-thumbnail" alt="">
+                </div>
+                <div class="col-md-8">
+                    <p>Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of
+                        classical
+                        Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin
+                        professor at
+                        Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur,
+                        from a
+                        Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered
+                        the
+                        undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum
+                        et
+                        Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on
+                        the
+                        theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem
+                        ipsum dolor
+                        sit amet..", comes from a line in section 1.10.32.
+                    </p>
+                </div>
+            </div>
+
+            <h4>Why We Do This</h4>
+            <div class="row">
+                <div class="col-md-8">
+                    <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered
+                        alteration in some form, by injected humour, or randomised words which don't look even slightly
+                        believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn't
+                        anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the
+                        Internet
+                        tend to repeat predefined chunks as necessary, making this the first true generator on the
+                        Internet.
+                        It uses a dictionary of over 200 Latin words, combined with a handful of model sentence
+                        structures,
+                        to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always
+                        free
+                        from repetition, injected humour, or non-characteristic words etc.</p>
+                </div>
+                <div class="col-md-4">
+                    <img src="https://images.wallpaperscraft.com/image/house_armchairs_rest_124501_2560x1440.jpg"
+                        class="img-thumbnail" alt="">
+                </div>
+            </div>
+        </div>
+        <footer id="row1">
+            <div id="row2" class="row">
+                <p>Lets connect on Social Media</p>
+                <ul>
+                    <li> <a href="https://www.instagram.com/u.o.m.a.r_officiel/?"><i class="fab fa-instagram"></i></a>
+                    </li>
+                    <li><a href="https://www.facebook.com/uomarearlie"><i class="fab fa-facebook"></i></a></li>
+                    <li><a href="https://mail.google.com/mail/"><i class="far fa-envelope"></i></a></li>
+                </ul>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-4">
+                        <img src="https://lh3.googleusercontent.com/XCATo9NQ4UQvQS7J_hydFoNquvGxCeoT7ByneLmamoSXML9P-Xu3PWpBnE9QE42cnaPVfjjSCUwYsdHHa9CKuwYFlkHCKq7nkR8VIdssuvF7_0g5QGLsWg2i8ISPDN19UDeAt_d5bAGNzXa7nnSpNruq_0Rr3OHlPpXyQ0_uTJLjEP00yaqFlQbKQI09WRFluYxsr63V3DtEBctWxuj4RL3pKH4EqevJKS4n4jTbCfLLRNwIX-JW4tPnFmGVo90Odm93jwA_vVzrNC5rhx2Mqswu1xKyVF6aWg4l2um2lB41NO2ShVzovP0N2Jr7SiBy-ZhWhJ3h9RT8kLpAVCuA8vX4SNK8YcPv9GTYivTtWSxgRddA4XTbuaY5D4BVZQ1EHoLITeUMWposqWaUCNwIS-M2W4wg4DuQEh_c6fPvrMeb5Po2ivqd0O_GcuSP32adfgt44UTTRV0H_7PvQgnwJ36qM0idkRoaV-LefWmDEBZ2YRLfBZRD3K11IkEXAZwe4fF_M9ouZhN01S_mQ_-XTdDFrvK5L_InB7jw3fz-HqhTDskr5HtCcx3xBhDDHxqNL8cFBgCVVofpwnZU5EQnGWdGSuIMF7hn5Nr6D1Ay1D-WyYYCFlR6PpU6qIejIpcJcWQBS63NNijrUI7qYlfswRLxrAyGk4k=w650-h981-no"
+                            class="rounded-circle img-thumbnail z-depth-1" style="width: 200px; height:200px" alt="">
+                    </div>
+                    <div class="col-md-2"></div>
+                    <div class="col-md-4"></div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </footer>
+    </div>
 
 </body>
+
 </html>
