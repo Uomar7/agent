@@ -1,0 +1,115 @@
+{% load bootstrap4 %}
+{% load staticfiles %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block styles%}
+    {% bootstrap_css %}
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Nixie+One&display=swap" rel="stylesheet">
+    {% endblock %}
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    {% if title%}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Y-Agent - Home</title>
+    {% endif %}
+</head>
+<style>
+.jumbotron{
+    height: 45vh;
+}
+.navbar .navbar-brand{
+    font-weight: bolder;
+}
+.navbar .navbar-brand:hover{
+    font-weight: lighter;
+    color: crimson;
+}
+.navbar li a{
+    color: black;
+    font-weight: bolder;
+}
+.navbar li a:hover{
+    color: crimson;
+    text-decoration: none;
+    font-weight: lighter;
+}
+.jumbotron h2{
+    display: flex;
+    justify-content: center;
+    font-family: 'Nixie One',cursive;
+    transform: translateY(60px);
+    font-size: 5em;
+    letter-spacing: 24px;
+}
+.jumbotron p{
+    text-align: center;
+    transform: translateY(2rem);
+    letter-spacing: 9px;
+    font-family: 'Nixie One',cursive;
+    font-weight: 600;
+}
+</style>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" style="font-family: 'Nixie One',cursive;">
+            <a class="navbar-brand" href="{% url 'home'%}">Y-AGENT</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                {% if user.is_authenticated %}
+                <li class="nav-item">
+                   <!-- <a class="nav-link" href="{% url 'profile' request.user.id %}">Profile</a> -->
+                </li>
+               <li>
+                   <!-- <a class="nav-link" href="{% url 'new_post' %}">Add Post</a> -->
+                </li>
+                <li>
+                    <!-- <a class="nav-link" href="{% url 'home'%}"> leave Neighbourhood</a> -->
+                </li>
+                <li>
+                    <!-- <a class="nav-link" href="/accounts/password/change">Change Password</a> -->
+               </li>
+               <li class="nav-item">
+                   <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                <!-- <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    Dropdown
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Action</a>
+                    <a class="dropdown-item" href="#">Another action</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                </div>
+            </li> -->
+            {% else%}
+            <li class="nav-item">
+                   <a href="/accounts/login">login</a>
+                </li>
+                {% endif %}
+            </ul>
+            <form class="form-inline my-2 my-lg-0" role="search" action="#">
+                <input class="form-control mr-sm-2" type="text" placeholder="Search" name="users" aria-label="Search">
+                <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit"><i class="glyphicon glyphicon-search"></i></button> -->
+            </form>
+        </div>
+    </nav>
+
+<div class="jumbotron">
+<h2><strong>Y-AGENT</strong></h2>
+<p>Your Mortgage Searcher</p>
+</div>
+</body>
+</html>
