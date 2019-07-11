@@ -23,7 +23,9 @@ from rest_framework.authtoken.views import obtain_auth_token
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'',include('neighb.urls')),
+    url(r'^accounts/', include('registration.backends.simple.urls')),
+    url(r'^logout/$', views.logout, {"next_page": '/'}),
+    url(r'^api-token-auth/', obtain_auth_token),
 ]
 if settings.DEBUG:
-
     urlpatterns += static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
