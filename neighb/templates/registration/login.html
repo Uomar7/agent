@@ -6,25 +6,43 @@
 {% endblock %}
 
 {% block content %}
-<div class="container" style="font-family: 'Leckerli One', cursive;">
+<style>
+    .card {
+        width: 60%;
+        transform: translateY(2em)
+    }
+    #cold{
+        display: flex;
+        justify-content: center;
+    }
+    .card h4{
+        text-align: center;
+    }
+</style>
+<div class="container" style="font-family: 'Nixie One',cursive;">
     <div class="row">
-        <div class="col-md-4"></div>
+        <div class="col-md-3"></div>
+        <div id="cold" class="col-md-6">
+            <!-- Card Light -->
+            <div class="card">
 
-        <div class="col-md-4">
-            {% if forms.errors %}
-            <p>Some Information Might Be Missing</p>
-            {% endif %}
-
-            <div class="panel panel-default">
-
-                <div class="panel-heading">
-                    <h3 class="text-center">Login</h3>
+                <h4 class="card-title">Y_AGENT</h4>
+                <!-- Card image -->
+                <div class="view overlay">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/48.jpg"
+                        alt="Card image cap">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
                 </div>
 
-                <div class="panel-body">
+                <!-- Card content -->
+                <div class="card-body">
+                    <!-- Title -->
+                    <!-- Text -->
                     <form action="/accounts/login/" method="post">
 
-                        {% csrf_token %}]
+                        {% csrf_token %}
 
                         {% bootstrap_form form layout='inline' %}
 
@@ -34,11 +52,16 @@
 
                         <input type="hidden" name="next" value="{{next}}">
                     </form>
+                    <p class="card-text"> Dont Have an Account? <a href="/accounts/register/">Sign
+                            up</a></p>
+                    <!-- Provides extra visual weight and identifies the primary action in a set of buttons -->
+                    <!-- <button type="button" class="btn btn-primary btn-md">Read more</button> -->
+
                 </div>
-                <p> Dont Have an Account? <a href="/accounts/register/">Sign up</a></p>
+                <!-- Card content -->
             </div>
         </div>
-        <div class="col-md-4"></div>
+        <div class="col-md-3"></div>
     </div>
 </div>
 {% endblock %}
