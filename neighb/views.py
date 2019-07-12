@@ -17,14 +17,10 @@ def home(request):
     return render(request, 'all_temps/home.html')
 
 @login_required(login_url="/accounts/login/")
-def display(request):
-    houses = Home.objects.all()
-    return render(request, 'all_temps/hs.html',{"houses":houses})
-
-@login_required(login_url="/accounts/login/")
 @transaction.atomic
 def profile(request,id):
     profile = Profile.objects.get(username = id)
+    title = profile
     houses = profile.houses.all()
 
     if request.method == "POST":
@@ -37,7 +33,57 @@ def profile(request,id):
     else:
         form = ProfileForm(instance=request.user.profile)
 
-    return render(request,'all_temps/profile.html', {"profile":profile,"houses":houses,"form":form})
+    return render(request,'all_temps/profile.html', {"profile":profile,"houses":houses,"form":form,"title":title})
+
+@login_required(login_url="/accounts/login/")
+def single_house(request, id):
+
+    current_user = Profile.objects.get(username = request.user)
+    form = ReviewForm()
+    house = Home.objects.get(id=id)
+    comments = house.comments.all()
+
+    try:
+        house = Home.objects.get(id=id)
+    except DoesNotExist:
+        raise Http404
+    
+    if request.method == "POST":
+        form = ReviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            comment = save(commit=False)
+            comment.house = house
+            comment.posted = current_user
+            comment.save()
+
+            return redirect('single_house',id)
+    else:
+        form = ReviewForm()
+    return render(request, 'all_temps/s-house.html',{"form":form,"house":house,"comments":comments})
+
+@login_required(login_url="/accounts/login/")
+def display(request):
+    title = "Y_AGENT- Mortgage World"
+    houses = Home.objects.all()
+
+    return render(request, 'all_temps/hs.html',{"houses":houses,"title":title,"form":form})
+
+@login_required(login_url="/accounts/login/")
+def add_home(request):
+    title = "Y_AGENT - Add Your Property"
+    current_user = Profile.objects.get(username=request.user)
+
+    if request.method == "POST":
+        form = HomeForm(request.POST, request.FILES)
+        if form.is_valid():
+            home = form.save(commit=False)
+            home.owner = current_user
+            home.save()
+            return redirect('index')
+    else:
+        form = HomeForm()
+    return render(request, "all_temps/add.html",{"form":form})
+    
 
 class ProfileList(APIView):
     permission_classes = (IsAdminOrReadOnly,)

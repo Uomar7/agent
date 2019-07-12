@@ -8,7 +8,21 @@
 {% endblock %}
 
 {% block content %}
+<style>
+    #no {
+        font-weight: bolder;
+        font-size: 6em;
+        margin: 0 auto;
+        transform: translateY(12rem);
+        justify-content: center;
+        color: aliceblue;
+    }
+</style>
 <div class="container">
+<div class="text-center">
+    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalSubscriptionForm">Launch
+        <i class="fas fa-plus"></i>Add Property</a>
+</div>
     <div class="row">
         {% for house in houses %}
         <div class="col-md-3">
@@ -36,7 +50,7 @@
                     <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p> -->
                     <!-- Link -->
-                    <a href="{% url 'single_post' post.id %}" class="black-text d-flex justify-content-end">
+                    <a href="{% url 'single_house' house.id %}" class="black-text d-flex justify-content-end">
                         <h5>View details <i class="fas fa-home"></i></h5>
                     </a>
 
@@ -45,8 +59,28 @@
             </div>
         </div>
         {% empty%}
-        <h4>No Houses On Sale</h4>
+        <h4 id="no">No Houses On Sale</h4>
         {% endfor%}
     </div>
+    <!-- modal -->
+    <div class="modal fade" id="modalSubscriptionForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <h4 class="modal-title w-100 font-weight-bold">Subscribe</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form action="{% url ''%}" method="post">
+                    {% csrf_token%}
+                    {% bootstrap_form form layout="inline"%}
+                    <input type="submit" value="Add Property" class="btn btn-success btn-sm">
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- end modal -->
 </div>
 {% endblock %}
