@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Cinzel+Decorative|Nixie+One&display=swap" rel="stylesheet">
     {% endblock %}
     <script src="https://kit.fontawesome.com/f3248859d7.js"></script>
-    <link rel="shortcut icon" type="image/x-icon"href="{% static 'img/icons8-home-24.png'  %}" />
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'img/icons8-home-24.png'  %}" />
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -24,6 +24,10 @@
     {% endif %}
 </head>
 <style>
+    * {
+        font-family: 'Nixie One';
+    }
+
     .jumbotron {
         height: 45vh;
         background: linear-gradient(to right, aliceblue, #6DD5FA, #2980B9);
@@ -87,13 +91,14 @@
     }
 
     ul li {
-        padding: 0.4rem 0;
+        padding: 0.1rem 0;
         margin: 0 3rem;
         position: relative;
         letter-spacing: 3px;
         color: white;
     }
-    ul li a{
+
+    ul li a {
         color: white;
     }
 </style>
@@ -198,8 +203,10 @@
                         from repetition, injected humour, or non-characteristic words etc.</p>
                 </div>
                 <div class="col-md-4">
-                    <img src="https://images.wallpaperscraft.com/image/house_armchairs_rest_124501_2560x1440.jpg"
-                        class="img-thumbnail" alt="">
+                    <div class="row">
+                        <img src="https://images.wallpaperscraft.com/image/house_armchairs_rest_124501_2560x1440.jpg"
+                            class="img-thumbnail" alt="">
+                    </div>
                 </div>
             </div>
         </div>
@@ -207,20 +214,64 @@
             <div id="row2" class="row">
                 <p>Lets connect on Social Media</p>
                 <ul>
-                    <li> <a href="https://www.instagram.com/u.o.m.a.r_officiel/?" target="blank"><i class="fab fa-instagram"></i></a></li>
-                    <li><a href="https://www.facebook.com/uomarearlie" target="blank"><i class="fab fa-facebook"></i></a></li>
-                    <li><a href="https://mail.google.com/mail/" target="blank"><i class="far fa-envelope"></i></a></li>
+                    <li> </li>
+                    <li></li>
+                    
                 </ul>
             </div>
             <div class="container">
-                <div id="rf" class="row">
-                    <div class="col-md-4">
-                        <img src="https://lh3.googleusercontent.com/XCATo9NQ4UQvQS7J_hydFoNquvGxCeoT7ByneLmamoSXML9P-Xu3PWpBnE9QE42cnaPVfjjSCUwYsdHHa9CKuwYFlkHCKq7nkR8VIdssuvF7_0g5QGLsWg2i8ISPDN19UDeAt_d5bAGNzXa7nnSpNruq_0Rr3OHlPpXyQ0_uTJLjEP00yaqFlQbKQI09WRFluYxsr63V3DtEBctWxuj4RL3pKH4EqevJKS4n4jTbCfLLRNwIX-JW4tPnFmGVo90Odm93jwA_vVzrNC5rhx2Mqswu1xKyVF6aWg4l2um2lB41NO2ShVzovP0N2Jr7SiBy-ZhWhJ3h9RT8kLpAVCuA8vX4SNK8YcPv9GTYivTtWSxgRddA4XTbuaY5D4BVZQ1EHoLITeUMWposqWaUCNwIS-M2W4wg4DuQEh_c6fPvrMeb5Po2ivqd0O_GcuSP32adfgt44UTTRV0H_7PvQgnwJ36qM0idkRoaV-LefWmDEBZ2YRLfBZRD3K11IkEXAZwe4fF_M9ouZhN01S_mQ_-XTdDFrvK5L_InB7jw3fz-HqhTDskr5HtCcx3xBhDDHxqNL8cFBgCVVofpwnZU5EQnGWdGSuIMF7hn5Nr6D1Ay1D-WyYYCFlR6PpU6qIejIpcJcWQBS63NNijrUI7qYlfswRLxrAyGk4k=w650-h981-no"
-                            class="rounded-circle img-thumbnail z-depth-1" style="width: 200px; height:200px" alt="">
+                <div id="rf" style="margin-top:10px;" class="row">
+                    <div class="col-md-3">
+                        <!-- Card -->
+                        <div class="card testimonial-card">
+
+                            <!-- Background color -->
+                            <div class="card-up indigo lighten-1"></div>
+
+                            <!-- Avatar -->
+                            <div class="avatar mx-auto white">
+                                <img src="https://lh3.googleusercontent.com/XCATo9NQ4UQvQS7J_hydFoNquvGxCeoT7ByneLmamoSXML9P-Xu3PWpBnE9QE42cnaPVfjjSCUwYsdHHa9CKuwYFlkHCKq7nkR8VIdssuvF7_0g5QGLsWg2i8ISPDN19UDeAt_d5bAGNzXa7nnSpNruq_0Rr3OHlPpXyQ0_uTJLjEP00yaqFlQbKQI09WRFluYxsr63V3DtEBctWxuj4RL3pKH4EqevJKS4n4jTbCfLLRNwIX-JW4tPnFmGVo90Odm93jwA_vVzrNC5rhx2Mqswu1xKyVF6aWg4l2um2lB41NO2ShVzovP0N2Jr7SiBy-ZhWhJ3h9RT8kLpAVCuA8vX4SNK8YcPv9GTYivTtWSxgRddA4XTbuaY5D4BVZQ1EHoLITeUMWposqWaUCNwIS-M2W4wg4DuQEh_c6fPvrMeb5Po2ivqd0O_GcuSP32adfgt44UTTRV0H_7PvQgnwJ36qM0idkRoaV-LefWmDEBZ2YRLfBZRD3K11IkEXAZwe4fF_M9ouZhN01S_mQ_-XTdDFrvK5L_InB7jw3fz-HqhTDskr5HtCcx3xBhDDHxqNL8cFBgCVVofpwnZU5EQnGWdGSuIMF7hn5Nr6D1Ay1D-WyYYCFlR6PpU6qIejIpcJcWQBS63NNijrUI7qYlfswRLxrAyGk4k=w650-h981-no"
+                                    class="img-thumbnail img-fluid" height="100px !important" alt="woman avatar">
+                            </div>
+
+                            <!-- Content -->
+                            <div class="card-body">
+                                <!-- Name -->
+                                <h4 class="card-title">UOMAR EARLIE</h4>
+                                <hr>
+                                <!-- Quotation -->
+                                <!-- <p class="text-center">About </p>
+                                <p><i class="fas fa-quote-left"></i> Lorem ipsum dolor sit amet, consectetur adipisicing
+                                    elit. Eos, adipisci</p> -->
+                            </div>
+
+                        </div>
+                        <!-- Card -->
+
+
                     </div>
-                    <div class="col-md-2"></div>
-                    <div class="col-md-4"></div>
-                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <li><a href="https://www.instagram.com/u.o.m.a.r_officiel/?" target="blank"><i
+                                    class="fab fa-instagram"></i></a> Instagram</li>
+
+                        <li>@u.o.m.a.r_officiel  </li>
+                    </div>
+                    <div class="col-md-3">
+                        <li><a href="https://www.facebook.com/uomarearlie" target="blank"><i
+                                    class="fab fa-facebook"></i></a> Facebook</li>
+                        <li>
+                            @Young Uomar Earlie
+                        </li>
+                    </div>
+                    <div class="col-md-3">
+                        <li><a href="https://mail.google.com/mail/" target="blank"><i class="far fa-envelope"></i></a> Email
+                        </li>
+                        <li>
+                            Tel: +254 791557666
+                        </li>
+                        <li>@uomarearlie7@gmail.com</li>
+
+                    </div>
                 </div>
             </div>
         </footer>

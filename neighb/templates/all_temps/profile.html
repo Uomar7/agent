@@ -73,7 +73,7 @@
                         <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
                         card's content.</p> -->
                         <!-- Link -->
-                        <a href="#" class="black-text d-flex justify-content-end">
+                        <a href="{% url 'single_house' project.id %}" class="black-text d-flex justify-content-end">
                             <h5>View Posts <i class="fas fa-home"></i></h5>
                         </a>
 
@@ -100,7 +100,7 @@
                         </button>
                     </div>
                     <div class="modal-body mx-3">
-                        <form action="{% url 'profile' profile.id %}" method="post">
+                        <form action="{% url 'profile' profile.id %}" method="post" enctype="multipart/form-data">
                             {% csrf_token%}
                             {% bootstrap_form form layout='inline'%}
                             <input type="submit" value="save profile" class="btn btn-success btn-sm">

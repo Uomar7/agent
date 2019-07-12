@@ -12,6 +12,14 @@ class HomeForm(forms.ModelForm):
     class Meta:
         model = Home
         exclude = ["owner"]
+        widgets = {
+            'hname':TextInput(attrs={
+                'placeholder':'House name'
+            }),
+            'description':Textarea(attrs={
+                'placeholder':'House description'
+            })
+        }
 
 class ReviewForm(forms.ModelForm):
     class Meta:

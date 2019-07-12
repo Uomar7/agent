@@ -9,6 +9,9 @@
 
 {% block content %}
 <style>
+        * {
+        font-family: 'Nixie One';
+        }
     #no {
         font-weight: bolder;
         font-size: 6em;
@@ -20,7 +23,7 @@
 </style>
 <div class="container">
 <div class="text-center">
-    <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalSubscriptionForm">Launch
+    <a href="{% url 'index'%}" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalSubscriptionForm">
         <i class="fas fa-plus"></i>Add Property</a>
 </div>
     <div class="row">
@@ -68,12 +71,12 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Subscribe</h4>
+                    <h4 class="modal-title w-100 font-weight-bold">Add Property</h4>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{% url ''%}" method="post">
+                <form action="{% url 'index'%}" method="post" enctype="multipart/form-data">
                     {% csrf_token%}
                     {% bootstrap_form form layout="inline"%}
                     <input type="submit" value="Add Property" class="btn btn-success btn-sm">

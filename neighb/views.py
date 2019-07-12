@@ -65,12 +65,6 @@ def single_house(request, id):
 def display(request):
     title = "Y_AGENT- Mortgage World"
     houses = Home.objects.all()
-
-    return render(request, 'all_temps/hs.html',{"houses":houses,"title":title,"form":form})
-
-@login_required(login_url="/accounts/login/")
-def add_home(request):
-    title = "Y_AGENT - Add Your Property"
     current_user = Profile.objects.get(username=request.user)
 
     if request.method == "POST":
@@ -82,7 +76,24 @@ def add_home(request):
             return redirect('index')
     else:
         form = HomeForm()
-    return render(request, "all_temps/add.html",{"form":form})
+
+    return render(request, 'all_temps/hs.html',{"houses":houses,"title":title,"form":form})
+
+@login_required(login_url="/accounts/login/")
+def add_home(request):
+    title = "Y_AGENT - Add Your Property"
+    current_user = Profile.objects.get(username=request.user)
+    form = HomeForm()
+    if request.method == "POST":
+        form = HomeForm(request.POST, request.FILES)
+        if form.is_valid():
+            home = form.save(commit=False)
+            home.owner = current_user
+            home.save()
+            return redirect('index')
+    else:
+        form = HomeForm()
+    return render(request, "all_temps/add.html",{"form":form,"title":title})
     
 
 class ProfileList(APIView):

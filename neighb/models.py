@@ -35,9 +35,9 @@ class Profile(models.Model):
 
 class Home(models.Model):
     hname = models.CharField(max_length=66)
-    pic1 = models.ImageField(upload_to='houses/')
-    pic2 = models.ImageField(upload_to = 'houses/')
-    pic3 = models.ImageField(upload_to = 'houses/')
+    pic1 = models.ImageField(upload_to='hao/')
+    pic2 = models.ImageField(upload_to='hao/')
+    pic3 = models.ImageField(upload_to='hao/')
     location = models.CharField(max_length = 80)
     price = models.CharField(max_length = 80)
     description = models.TextField()

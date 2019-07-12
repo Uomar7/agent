@@ -11,9 +11,12 @@
 <div class="container" style="font-family: 'Nixie One'">
 
     <div class="row" style="font-family: 'Nixie One'">
-        <hr>
-        <img src="{{ post.post_image.url }}" class="img-thumbnail" alt="">
-        <hr>
+        <div class="col-md-4"> <img src="{{ house.pic1.url }}" data-toggle="modal" data-target="#pic1"
+                class="img-thumbnail" alt=""></div>
+        <div class="col-md-4"><img src="{{ house.pic2.url }}" data-toggle="modal" data-target="#pic2"
+                class="img-thumbnail" alt=""></div>
+        <div class="col-md-4"><img src="{{ house.pic3.url }}" data-toggle="modal" data-target="#pic3"
+                class="img-thumbnail" alt=""></div>
     </div>
 </div>
 <hr>
@@ -24,16 +27,16 @@
         <div class="panel">
             <div class="panel-header">
                 <h4>
-                    {{post.title}}
+                    {{house.hname}}
                 </h4>
             </div>
             <div class="panel-body">
 
-                <p> Post Description: {{post.post_description}}</p>
+                <p> Post Description: {{house.description}}</p>
                 <hr>
-                <p>Posted by {{post.profile}}</p>
+                <p>Posted by {{house.owner}}</p>
                 <hr>
-                <p>{{post.posted}}</p> <a href="{{post.link}}" class="btn btn-success btn-sm">View Site</a>
+                <a href="{{post.link}}" class="btn btn-success btn-sm">View Site</a>
             </div>
         </div>
     </div>
@@ -51,7 +54,7 @@
         <div class="col-md-2"></div>
     </div>
     <hr>
-    <form action="{% url 'single_post' post.id%}" id="form" method="post">
+    <form action="{% url 'single_house' house.id %}" id="form" method="post">
         {% csrf_token%}
         {%bootstrap_form form layout='inline'%}
         <input type="submit" class="btn btn-success btn-sm" value="Comment">
@@ -59,6 +62,111 @@
 
     <hr>
 </div>
+
+<!-- modal1 -->
+<div class="modal fade" id="pic1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Image 1</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="card">
+
+                <!-- Card image -->
+                <div class="card-header">
+                    {{house.owner}}
+                </div>
+                <div class="view overlay">
+                    <img class="img-thumbnail" src="{{ house.pic1.url }}" alt="Card image cap">
+                    <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <!-- Card content -->
+                <div class="card-body">
+                    <p class="card-text">{{house.hname}}</p>
+                    <hr>                
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal -->
+
+<!-- modal2 -->
+<div class="modal fade" id="pic2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Image 2</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="card">
+
+                <!-- Card image -->
+                <div class="card-header">
+                    {{house.owner}}
+                </div>
+                <div class="view overlay">
+                    <img class="img-thumbnail" src="{{ house.pic2.url }}" alt="Card image cap">
+                    <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <!-- Card content -->
+                <div class="card-body">
+                    <p class="card-text">{{house.hname}}</p>
+                    <hr>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal -->
+<!-- modal3 -->
+<div class="modal fade" id="pic3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header text-center">
+                <h4 class="modal-title w-100 font-weight-bold">Image 1</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="card">
+
+                <!-- Card image -->
+                <div class="card-header">
+                    {{house.owner}}
+                </div>
+                <div class="view overlay">
+                    <img class="img-thumbnail" src="{{ house.pic3.url }}" alt="Card image cap">
+                    <a>
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <!-- Card content -->
+                <div class="card-body">
+                    <p class="card-text">{{house.hname}}</p>
+                    <hr>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end modal -->
 {% endblock%}
 
 {% block scripts %} {{block.super}}
