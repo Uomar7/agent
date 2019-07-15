@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^$',views.home,name='home'),
     url(r'^display/$',views.display, name='index'),
     url(r'^profile/(\d+)',views.profile,name="profile"),
+    url(r'^search',views.search, name='search'),
     url(r'^add/$',views.add_home,name="add"),
     url(r'^single_house/(\d+)',views.single_house,name="single_house"),
     url(r'^api/comment/$',views.ReviewList.as_view()),

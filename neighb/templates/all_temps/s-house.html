@@ -31,12 +31,14 @@
                 </h4>
             </div>
             <div class="panel-body">
-
+                <p class="card-text">Price {{ house.price }}</p>
                 <p> Post Description: {{house.description}}</p>
+                <p>Location: {{house.location}}</p>
+                <a target="blank" href="https://www.google.com/maps/search/?api=1&query={{house.location}}">View Location</a>
                 <hr>
                 <p>Posted by {{house.owner}}</p>
                 <hr>
-                <a href="{{post.link}}" class="btn btn-success btn-sm">View Site</a>
+                <!-- <a href="{{post.link}}" class="btn btn-success btn-sm">View Site</a> -->
             </div>
         </div>
     </div>
@@ -45,9 +47,10 @@
     <div class="row">
         <div class="col-md-2"></div>
         <div class="col-md-8">
+            <h5 class="text-center" style="font-weight: bolder;"> House Reviews </h5>
             {%for comment in comments%}
             <div class="well">
-                <p>{{ comment.posted_by}}: {{comment.review}}</p>
+                <p>{{ comment.posted}}: {{comment.comment}}</p>
             </div>
             {% endfor%}
         </div>

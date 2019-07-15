@@ -51,7 +51,7 @@ def single_house(request, id):
     if request.method == "POST":
         form = ReviewForm(request.POST, request.FILES)
         if form.is_valid():
-            comment = save(commit=False)
+            comment = form.save(commit=False)
             comment.house = house
             comment.posted = current_user
             comment.save()
@@ -60,6 +60,18 @@ def single_house(request, id):
     else:
         form = ReviewForm()
     return render(request, 'all_temps/s-house.html',{"form":form,"house":house,"comments":comments})
+
+def search(request):
+    if 'search' in request.GET and request.GET["search"]:
+        search_term = request.GET.get("search")
+        searched_houses = Home.objects.filter(location__icontains=search_term)
+        message = f"{search_term}"
+
+        return render(request, 'all_temps/search.html',{"message":message,"houses": searched_houses})
+
+    else:
+        message = "You haven't searched for any term"
+        return render(request, 'all_temps/search.html',{"message":message})
 
 @login_required(login_url="/accounts/login/")
 def display(request):

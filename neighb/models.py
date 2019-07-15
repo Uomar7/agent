@@ -8,7 +8,7 @@ from django.dispatch import receiver
 class Profile(models.Model):
     fname = models.CharField(max_length=40)
     lname = models.CharField(max_length=40)
-    id_no = models.CharField(max_length = 12)
+    id_no = models.IntegerField(max_length = 12)
     email = models.EmailField()
     username = models.OneToOneField(User, on_delete=models.CASCADE)
     bio = models.TextField(max_length=500, blank=True)
@@ -66,6 +66,21 @@ class Review(models.Model):
     def delete_comment(self):
         self.delete()
 
+class Booking(models.Model):
+    housename = models.CharField(max_length = 80)
+    person = models.CharField(max_length = 80)
+    location =  models.CharField(max_length = 80)
+    email = models.CharField(max_length = 80)
+    p_no = models.IntegerField(max_length= 12)
+
+    def __str__(self):
+        return self.housename
+
+    def save_booking(self):
+        self.save()
+    
+    def delete_booking(self):
+        self.delete()
 
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
